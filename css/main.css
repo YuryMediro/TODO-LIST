@@ -1,0 +1,383 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Inter', sans-serif;
+	box-sizing: border-box;
+}
+
+body {
+	--background-wrapper: linear-gradient(135deg, #153677, #4e085f);
+	--background-main: #f7f7f7;
+	--text-header: #252525;
+	--input-background-color: #f7f7f7;
+	--input-border: #6c63ff;
+	--input-box-shadow: 0px 0px 0px 2px #6c63ff;
+	--icon-search-background: #ffffff;
+	--icon-search: url(../img/light/light-search.svg);
+	--input-placeholder: #c3c1e5;
+	--placeholder-text: #6c63ff;
+	--pop-upbackground-color: #f7f7f7;
+	--pop-up-text-header: #252525;
+	--pop-up-btn-cancel: #f7f7f7;
+	--pop-up-btn-cancel-hover: #ceced3;
+	--btn-image: url(../img/light/dark-theme.svg);
+	--background-image-unmarked: url(../img/light/light-back.svg);
+
+	--border: #6c63ff;
+}
+
+body.dark-theme {
+	--background-wrapper: linear-gradient(
+		90deg,
+		rgba(2, 0, 36, 1) 0%,
+		rgba(80, 80, 134, 1) 35%,
+		rgba(0, 212, 255, 1) 100%
+	);
+	--background-main: #252525;
+	--text-header: #f7f7f7;
+	--input-background-color: #252525;
+	--input-border: #f7f7f7;
+	--input-box-shadow: 0px 0px 0px 2px #f7f7f7;
+	--icon-search-background: #252525;
+	--icon-search: url(../img/dark/dark-search.svg);
+	--input-placeholder: #666666;
+	--placeholder-text: #f7f7f7;
+	--pop-upbackground-color: #252525;
+	--pop-up-text-header: #f7f7f7;
+	--pop-up-btn-cancel: #252525;
+	--pop-up-btn-cancel-hover: #b8dddd;
+	--btn-image: url(../img/dark/light-theme.svg);
+	--background-image-unmarked: url(../img/dark/dark-back.svg);
+	/* не менял */
+	--border: #6c63ff;
+}
+.wrapper {
+	width: 100%;
+	min-height: 100vh;
+	background: var(--background-wrapper);
+	padding: 10px;
+}
+
+.todo-app {
+	width: 100%;
+	max-width: 770px;
+	height: 500px;
+	background: var(--background-main);
+	margin: 100px auto 20px;
+	border-radius: 10px;
+	padding: 40px 5px 70px;
+	position: relative;
+}
+.todo-app h1 {
+	display: flex;
+	justify-content: center;
+	color: var(--text-header);
+	font-weight: 500;
+	font-size: 26px;
+	line-height: 38.87px;
+}
+
+.row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.search-note {
+	margin-right: 15px;
+	display: flex;
+	justify-content: flex-start;
+}
+.search-note input:focus {
+	outline: none;
+	box-shadow: var(--input-box-shadow);
+	opacity: 0.6;
+}
+
+* {
+	box-sizing: border-box;
+}
+form {
+	position: relative;
+	margin: 0 auto;
+}
+
+button[class='search'] {
+	right: 13px;
+	margin-top: 7px;
+	border: none;
+	position: absolute;
+	cursor: pointer;
+	background-color: var(--icon-search-background);
+	background-image: var(--icon-search);
+	background-repeat: no-repeat;
+	width: 21px;
+	height: 21px;
+}
+input[class='name-note'] {
+	border: 1px solid var(--input-border);
+	border-radius: 5px;
+	width: 595px;
+	height: 38px;
+	padding: 8px 16px 8px 16px;
+}
+
+input[placeholder='Search note...'] {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 16px;
+	color: var(--placeholder-text);
+	background-color: var(--input-background-color);
+}
+
+/* Выпадающий список  */
+/* The container must be positioned relative: */
+.filter-todo {
+	position: relative;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.filter-todo select {
+	display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+	background-color: #6c63ff;
+	border: 1px solid #6c63ff;
+	border-radius: 5px;
+	height: 38px;
+	width: 101px;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 18px;
+	margin-right: 16px;
+	padding-top: 9px;
+	padding-left: 7px;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+	position: absolute;
+	content: '';
+	top: 16px;
+	right: 20px;
+	width: 0;
+	height: 0;
+	border: 6px solid transparent;
+	border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+	border-color: transparent transparent #fff transparent;
+	top: 7px;
+}
+
+/* Style items (options): */
+.select-items {
+	position: absolute;
+	background-color: #f7f7f7;
+	color: #6c63ff;
+	top: 100%;
+	left: 0;
+	right: 0;
+	z-index: 99;
+	border: 1px solid #6c63ff;
+	border-radius: 5px;
+	width: 101px;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 18px;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+	display: none;
+}
+
+.select-items div:hover {
+	padding-left: 6px;
+	transition: 0.3s;
+	background-color: #6c63ff33;
+}
+
+.btn-theme {
+	border: 1px solid var(--border);
+	width: 38px;
+	height: 38px;
+	border-radius: 5px;
+	background-color: #6c63ff;
+	cursor: pointer;
+	background-image: var(--btn-image);
+	background-repeat: no-repeat;
+	background-position: 5px;
+}
+.btn-theme:hover {
+	background-color: #5850dd;
+}
+
+.unmarked-background {
+	background-image: var(--background-image-unmarked);
+	background-repeat: no-repeat;
+	width: 221px;
+	height: 174px;
+	margin-left: 264px;
+	margin-top: 30px;
+	display: none;
+}
+
+/* Делаем стили для заметок */
+.todo-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.todo-list {
+	min-width: 30%;
+	list-style: none;
+}
+.todo {
+	margin: 0.5rem;
+	padding-left: 0.5rem;
+	background-color: #252525;
+	color: #534cc2;
+	font-size: 1.5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: 0.5s;
+	border-radius: 2rem;
+}
+.todo li {
+	flex: 1;
+}
+
+
+/* Делаем pop-up кнопку и окно  */
+.plus_button {
+	position: absolute;
+	display: flex;
+	width: 50px;
+	height: 50px;
+	background-color: #6c63ff;
+	border-radius: 50%;
+	border: 1px solid var(--border);
+	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+	margin-left: 700px;
+	margin-top: 326px;
+	bottom: 20px;
+	right: 20px;
+}
+
+.plus_button:hover {
+	background-color: #534cc2;
+}
+
+.pop_up {
+	/* display: none;  это убрали для анимации*/
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background-color: transparent;
+	z-index: 2; /* -44.5%*/
+	transform: translateX(23%) translateY(25%) scale(0); /*переносим po-up на координаты кнопки и поставим масштаб 0 */
+	transition: 0.5s ease-in-out;
+}
+
+.pop_up.active {
+	/* display: block; это убрали для анимации*/
+	transform: translateX(0%) translateY(0%) scale(100%); /*переноси pop-up обратно*/
+	background-color: rgb(0, 0, 0, 0.8);
+}
+.pop_up_container {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+.pop_up_body {
+	margin: auto;
+	position: relative;
+	width: 500px;
+	height: 289px;
+	border-radius: 16px;
+	background-color: var(--pop-upbackground-color);
+	border: 1px solid #f7f7f7;
+	border-radius: 16px;
+}
+
+.pop_up_body p {
+	text-align: center;
+	color: var(--pop-up-text-header);
+	font-size: 24px;
+	line-height: 24px;
+	font-weight: 500;
+	margin-top: 18px;
+}
+
+.pop_up_body input {
+	display: block;
+	width: 440px;
+	height: 38px;
+	margin: 30px 25px 128px auto;
+	border: 1px solid var(--input-border);
+	border-radius: 5px;
+	padding: 8px 16px 8px 16px;
+}
+
+.pop_up_body input:focus {
+	outline: none;
+	box-shadow: var(--input-box-shadow);
+	opacity: 0.6;
+}
+
+input[placeholder='Input your note...'] {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 16px;
+	color: var(--placeholder-text);
+	background-color: var(--input-background-color);
+}
+input::placeholder {
+	color: var(--input-placeholder);
+}
+
+.pop_up_btn_container {
+	display: flex;
+	justify-content: space-between;
+}
+.btn-cancel {
+	width: 110px;
+	height: 38px;
+	border: 1px solid var(--border);
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 18px;
+	line-height: 18px;
+	font-weight: 500;
+	color: #6c63ff;
+	margin-left: 30px;
+	background-color: var(--pop-up-btn-cancel);
+}
+.btn-apply {
+	width: 110px;
+	height: 38px;
+	border: 1px solid var(--border);
+	background-color: #6c63ff;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 18px;
+	line-height: 18px;
+	font-weight: 500;
+	color: #f7f7f7;
+	margin-right: 30px;
+}
+.btn-cancel:hover {
+	background-color: var(--pop-up-btn-cancel-hover);
+}
+.btn-apply:hover {
+	background-color: #534cc2;
+}

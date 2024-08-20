@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>To-Do List</title>
+		<link rel="stylesheet" href="/To-Do List/css/main.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="item todo-app">
+				<h1>TODO LIST</h1>
+				<div class="item row">
+					<form class="search-note" action="#!">
+						<input class="name-note" type="text" placeholder="Search note..." />
+						<button class="search" type="submit"></button>
+					</form>
+
+					<!-- Выпадающий список -->
+					<div class="filter-todo">
+						<select>
+							<option value="all">All</option>
+							<option value="all">All</option>
+							<option value="complete">Complete</option>
+							<option value="incomplete">Incomplete</option>
+						</select>
+					</div>
+
+					<!-- Переключение темы  -->
+					<div class="btn-theme"></div>
+				</div>
+				<!-- Задний фон при отсутствие заметок -->
+				<div class="unmarked-background"></div>
+
+				<!-- Делаем сами заметки -->
+				<div class="todo-container">
+					<ul class="todo-list"></ul>
+				</div>
+
+				<!-- pop-up окно -->
+				<div class="plus_button" id="open_pop_up">
+					<a href="#"><img src="/To-Do List/img/light/plus.svg" alt="" /></a>
+				</div>
+
+				<div class="pop_up" id="pop_up">
+					<div class="pop_up_container">
+						<div class="pop_up_body" id="pop_up_body">
+							<p>NEW NOTE</p>
+							<form action="">
+								<input
+									class="todo-input"
+									type="text"
+									placeholder="Input your note..."
+								/>
+							</form>
+							<div class="pop_up_btn_container">
+								<button class="btn-cancel" id="pop_up_close">CANCEL</button>
+								<button class="btn-apply">APPLY</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="/To-Do List/js/main.js"></script>
+	</body>
+</html>

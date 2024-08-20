@@ -1,0 +1,77 @@
+
+.todo-app {
+	background: #f7f7f7;	
+}
+
+.todo-app h1 {
+	color: #252525;	
+}
+
+input[class='name-note'] {
+	border: 1px solid #6c63ff;	
+}
+
+input[placeholder='Search note...'] {
+	color: #6c63ff;
+}
+input::placeholder {
+	color: #c3c1e5;
+}
+
+
+/* Делаем pop-up кнопку и окно  */
+.plus_button {	
+	background-color: #6c63ff;	
+	border: 1px solid #6c63ff;	
+}
+
+.plus_button:hover {
+	background-color: #534cc2;
+}
+
+.pop_up.active {
+	background-color: rgb(0, 0, 0, 0.8);
+}
+
+.pop_up_body {
+	background-color: #f7f7f7;
+}
+
+.pop_up_body p {	
+	color: #252525;	
+}
+
+.pop_up_body input {
+	border: 1px solid #6c63ff;
+}
+
+input[placeholder='Input your note...'] {	
+	color: #6c63ff;
+}
+
+input::placeholder {
+	color: #c3c1e5;
+}
+
+.btn-cancel {	
+	border: 1px solid #6c63ff;	
+	color: #6c63ff;	
+}
+.btn-aplly {	
+	border: 1px solid #6c63ff;
+	background-color: #6c63ff;
+}
+.btn-cancel:hover {
+	background-color: #ceced3;
+}
+.btn-aplly:hover {
+	background-color: #534cc2;
+}
+
+.change-theme[data-theme='light'] {
+	display: none;
+}
+
+.change-theme[data-theme='dark'] {
+	display: block;
+}
