@@ -86,7 +86,6 @@ then close all select boxes: */
 document.addEventListener('click', closeAllSelect)
 
 // Переключение темы
-
 // Выбираем кнопку
 const btn = document.querySelector('.btn-theme')
 // Отслеживаем щелчок по кнопке
@@ -110,128 +109,58 @@ cosePopUp.addEventListener('click', () => {
 })
 
 // todo list
-// const todoInput = document.querySelector('todo-input')
-// const todoList = document.querySelector('todo-list')
-// const filterOption = document.querySelector('filter-todo')
-// const todoButton = document.querySelector('btn-apply')
+// Selectors
+const todoInput = document.querySelector('.todo-input')
+const todoButton = document.querySelector('.btn-apply')
+const todoList = document.querySelector('.todo-list')
 
-// document.addEventListener('DOMContentLoaded', getLocalTodos)
-// todoButton.addEventListener('click', addTodo)
-// todoList.addEventListener('click', deleteCheck)
-// filterOption.addEventListener('change', filterTodo)
+// Event Listeners
+todoButton.addEventListener('click', addTodo)
+todoList.addEventListener('click', deleteCheck)
 
-// function addTodo(event) {
-// 	event.preventDefault()
-// 	const todoDiv = document.createElement('div')
-// 	todoDiv.classList.add('todo')
-// 	const newTodo = document.createElement('li')
-// 	newTodo.innerText = todoInput.value
-// 	newTodo.classList.add('todo-item')
-// 	todoDiv.appendChild(newTodo)
-// 	// ADDING TO LOCAL STORAGE
-// 	saveLocalTodos(todoInput.value)
+// Function
+function addTodo(event) {
+	//Prevent form from submitting
+	event.preventDefault()
+	//Todo DIV
+	const todoDiv = document.createElement('div')
+	todoDiv.classList.add('todo')
+	//Create li
+	const newTodo = document.createElement('li')
+	newTodo.innerText = todoInput.value
+	newTodo.classList.add('todo-item')
+	todoDiv.appendChild(newTodo)
+	//Check mark button
+	const completeButton = document.createElement('button')
+	completeButton.innerHTML = '<i class="fas fa-check"></i>'
+	completeButton.classList.add('complete-btn')
+	todoDiv.appendChild(completeButton)
+	//Check edit button
+	const editButton = document.createElement('button')
+	editButton.innerHTML = '<i class="fas fa-edit"></i>'
+	editButton.classList.add('edit-btn')
+	todoDiv.appendChild(editButton)
+	//Check trash button
+	const trashButton = document.createElement('button')
+	trashButton.innerHTML = '<i class="fas fa-trash"></i>'
+	trashButton.classList.add('trash-btn')
+	todoDiv.appendChild(trashButton)
+	//APPEND TO LIST
+	todoList.appendChild(todoDiv)
+	//CLEAR TODO INPU VALUE
+	todoInput.value = ''
+}
 
-// 	const completedButton = document.createElement('button')
-// 	completedButton.innerHTML = '<li class="apply"></li>'
-// 	completedButton.classList.add('complete-btn')
-// 	todoDiv.appendChild(completedButton)
+function deleteCheck(e) {
+	const item = e.target
+	//DELETE TODO
+	if (item.classList[0] === 'trash-btn') {
+		const todo = item.parentElement
+		todo.remove()
+	}
 
-// 	const trashButton = document.createElement('button')
-// 	trashButton.innerHTML = '<li class="apply"></li>'
-// 	trashButton.classList.add('trash-btn')
-// 	todoDiv.appendChild(trashButton)
-
-// 	todoList.appendChild(todoDiv)
-// 	todoInput.value = ''
-// }
-
-// function deleteCheck(e) {
-// 	const item = e.target
-
-// 	if (item.classList[0] === 'trash-btn') {
-// 		const todo = item.parentElement
-// 		todo.classList.add('slide')
-
-// 		removeLocalTodos(todo)
-// 		todo.addEventListener('transitionend', function () {
-// 			todo.remove()
-// 		})
-// 	}
-// 	if (item.classList[0] === 'complete-btn') {
-// 		const todo = item.parentElement
-// 		todo.classList.toggle('completed')
-// 	}
-// }
-
-// function filterTodo(e) {
-// 	const todos = todoList.childNodes
-// 	todos.forEach(function (todo) {
-// 		switch (e.target.value) {
-// 			case 'all':
-// 				todo.style.display = 'flex'
-// 				break
-// 			case 'completed':
-// 				if (todo.classList.contains('completed')) {
-// 					todo.style.display = 'flex'
-// 				} else {
-// 					todo.style.display = 'none'
-// 				}
-// 				break
-// 			case 'incompleted':
-// 				if (!todo.classList.contains('completed')) {
-// 					todo.style.display = 'flex'
-// 				} else {
-// 					todo.style.display = 'none'
-// 				}
-// 				break
-// 		}
-// 	})
-// }
-
-// function saveLocalTodos(todo) {
-// 	let todos
-// 	if (localStorage.getItem('todos') === null) {
-// 		todos = []
-// 	} else {
-// 		todos = JSON.parse(localStorage.getItem('todos'))
-// 	}
-// 	todos.push(todo)
-// 	localStorage.setItem('todos', JSON.stringify(todos))
-// }
-
-// function getLocalTodos() {
-// 	let todos
-// 	if (localStorage.getItem('todos') === null) {
-// 		todos = []
-// 	} else {
-// 		todos = JSON.parse(localStorage.getItem('todos'))
-// 	}
-// 	todos.forEach(function (todo) {
-// 		const todoDiv = document.createElement('div')
-// 		todoDiv.classList.add('todo')
-// 		const newTodo = document.createElement('li')
-// 		newTodo.innerText = todo
-// 		newTodo.classList.add('todo-item')
-// 		todoDiv.appendChild(newTodo)
-
-// 		const trashButton = document.createElement('button')
-// 		trashButton.innerHTML = "<li class='apply'>APPLY</li>"
-// 		trashButton.classList.add('complete-btn')
-// 		todoDiv.appendChild(trashButton)
-
-// 		todoList.appendChild(todoDiv)
-// 	})
-// }
-
-// function removeLocalTodos(todo) {
-// 	let todos
-// 	if (localStorage.getItem('todos') === null) {
-// 		todos = []
-// 	} else {
-// 		todos = JSON.parse(localStorage.getItem('todos'))
-// 	}
-
-// 	const todoIndex = todo.children[0].innerText
-// 	todos.splice(todos.indexOf(todoIndex), 1)
-// 	localStorage.setItem('todos', JSON.stringify(todos))
-// }
+	if (item.classList[0] === 'complete-btn') {
+		const todo = item.parentElement
+		todo.classList.toggle('completed')
+	}
+}

@@ -22,7 +22,6 @@ body {
 	--pop-up-btn-cancel-hover: #ceced3;
 	--btn-image: url(../img/light/dark-theme.svg);
 	--background-image-unmarked: url(../img/light/light-back.svg);
-
 	--border: #6c63ff;
 }
 
@@ -138,7 +137,7 @@ input[placeholder='Search note...'] {
 }
 
 .filter-todo select {
-	display: none; /*hide original SELECT element: */
+	display: none; /*hide original SELECT element:  */
 }
 
 .select-selected {
@@ -201,6 +200,7 @@ input[placeholder='Search note...'] {
 	background-color: #6c63ff33;
 }
 
+/* Стили для кнопки переключения темы */
 .btn-theme {
 	border: 1px solid var(--border);
 	width: 38px;
@@ -216,6 +216,7 @@ input[placeholder='Search note...'] {
 	background-color: #5850dd;
 }
 
+/* Задний фон без заметок  */
 .unmarked-background {
 	background-image: var(--background-image-unmarked);
 	background-repeat: no-repeat;
@@ -233,25 +234,57 @@ input[placeholder='Search note...'] {
 	align-items: center;
 }
 .todo-list {
-	min-width: 30%;
 	list-style: none;
+	min-width: 35%;
 }
 .todo {
-	margin: 0.5rem;
-	padding-left: 0.5rem;
-	background-color: #252525;
-	color: #534cc2;
-	font-size: 1.5rem;
+	height: 30px;
+	margin-top: 30px;
+	background: rgb(226, 19, 106);
+	color: #000000;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 20px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	transition: 0.5s;
-	border-radius: 2rem;
+	transition: all 0.5s ease;
 }
 .todo li {
 	flex: 1;
 }
+.todo-item {
+	padding: 0rem 0.5rem;
+}
+.complete-btn {
+}
 
+.edit-btn {
+	background-image: url(../img/light/edit-icon.svg);
+	background-repeat: no-repeat;
+	width: 18px;
+	height: 18px;
+	background-color: #f7f7f7;
+	border: none;
+	cursor: pointer;
+}
+.trash-btn {
+	background-image: url(../img/light/del-icon.svg);
+	background-repeat: no-repeat;
+	width: 18px;
+	height: 18px;
+	background-color: #f7f7f7;
+	border: none;
+	cursor: pointer;
+}
+.trash-btn:hover{
+	color: #E50000;
+}
+
+.completed {
+	text-decoration: line-through;
+	opacity: 0.8;
+}
 
 /* Делаем pop-up кнопку и окно  */
 .plus_button {
@@ -369,11 +402,13 @@ input::placeholder {
 	background-color: #6c63ff;
 	border-radius: 5px;
 	cursor: pointer;
+	margin-right: 30px;
+}
+.apply {
 	font-size: 18px;
 	line-height: 18px;
 	font-weight: 500;
 	color: #f7f7f7;
-	margin-right: 30px;
 }
 .btn-cancel:hover {
 	background-color: var(--pop-up-btn-cancel-hover);
