@@ -23,6 +23,9 @@ body {
 	--btn-image: url(../img/light/dark-theme.svg);
 	--background-image-unmarked: url(../img/light/light-back.svg);
 	--border: #6c63ff;
+	--todo-list-background: #f7f7f7;
+	--todo-list-text-color: #000000;
+	--todo-list-icon-background-color: #f7f7f7;
 }
 
 body.dark-theme {
@@ -47,6 +50,9 @@ body.dark-theme {
 	--pop-up-btn-cancel-hover: #b8dddd;
 	--btn-image: url(../img/dark/light-theme.svg);
 	--background-image-unmarked: url(../img/dark/dark-back.svg);
+	--todo-list-background: #252525;
+	--todo-list-text-color: #f7f7f7;
+	--todo-list-icon-background-color: #252525;
 	/* не менял */
 	--border: #6c63ff;
 }
@@ -100,7 +106,6 @@ form {
 	margin: 0 auto;
 }
 
-
 button[class='search'] {
 	right: 13px;
 	margin-top: 7px;
@@ -116,7 +121,7 @@ button[class='search'] {
 input[class='name-note'] {
 	border: 1px solid var(--input-border);
 	border-radius: 5px;
-	 width: 595px; 
+	width: 595px;
 	height: 38px;
 	padding: 8px 16px 8px 16px;
 }
@@ -130,75 +135,40 @@ input[placeholder='Search note...'] {
 }
 
 /* Выпадающий список  */
-/* The container must be positioned relative: */
-.filter-todo {
-	position: relative;
-	color: #ffffff;
+select {
+	appearance: none;
+	outline: none;
+	box-shadow: none;
+	color: #f7f7f7;
 	cursor: pointer;
-}
-
-.filter-todo select {
-	display: none; /*hide original SELECT element:  */
-}
-
-.select-selected {
+	width: 6.313rem;
+	height: 2.375rem;
 	background-color: #6c63ff;
 	border: 1px solid #6c63ff;
 	border-radius: 5px;
-	height: 38px;
-	width: 101px;
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 18px;
-	margin-right: 16px;
-	padding-top: 9px;
-	padding-left: 7px;
+	padding-left: 8px;
 }
-
-/* Style the arrow inside the select element: */
-.select-selected:after {
+.select {
+	margin-right: 11px;
+	color: #f7f7f7;
+	position: relative;
+	overflow: hidden;
+}
+.select::after {
 	position: absolute;
 	content: '';
 	top: 16px;
-	right: 20px;
+	right: 5px;
 	width: 0;
 	height: 0;
 	border: 6px solid transparent;
 	border-color: #fff transparent transparent transparent;
+	pointer-events: none;
 }
 
-/* Point the arrow upwards when the select box is open (active): */
-.select-selected.select-arrow-active:after {
-	border-color: transparent transparent #fff transparent;
-	top: 7px;
-}
-
-/* Style items (options): */
-.select-items {
-	position: absolute;
-	background-color: #f7f7f7;
+.option {
+	background-color: #ffffff;
 	color: #6c63ff;
-	top: 100%;
-	left: 0;
-	right: 0;
-	z-index: 99;
-	border: 1px solid #6c63ff;
-	border-radius: 5px;
-	width: 101px;
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 18px;
-}
-
-/* Hide the items when the select box is closed: */
-.select-hide {
-	display: none;
-}
-
-.select-items div:hover {
-	padding-left: 6px;
-	transition: 0.3s;
-	background-color: #6c63ff33;
 }
 
 /* Стили для кнопки переключения темы */
@@ -211,7 +181,7 @@ input[placeholder='Search note...'] {
 	cursor: pointer;
 	background-image: var(--btn-image);
 	background-repeat: no-repeat;
-	background-position: 5px;
+	background-position: center;
 }
 .btn-theme:hover {
 	background-color: #5850dd;
@@ -241,8 +211,8 @@ input[placeholder='Search note...'] {
 .todo {
 	height: 30px;
 	margin-top: 30px;
-	background: #f7f7f7;
-	color: #000000;
+	background: var(--todo-list-background);
+	color: var(--todo-list-text-color);
 	font-weight: 500;
 	font-size: 20px;
 	line-height: 20px;
@@ -263,30 +233,34 @@ input[placeholder='Search note...'] {
 	height: 26px;
 	border: 1px solid #6c63ff;
 	border-radius: 2px;
-	
+	background-color: var(--todo-list-icon-background-color);
 }
-
 
 .edit-btn {
 	background-image: url(../img/light/edit-icon.svg);
 	background-repeat: no-repeat;
 	width: 18px;
 	height: 18px;
-	background-color: #f7f7f7;
+	background-color: var(--todo-list-icon-background-color);
 	border: none;
 	cursor: pointer;
 	margin-right: 14px;
+}
+.edit-btn:hover {
+	background-image: url(../img/light/edit-icon-hover.svg);
 }
 .trash-btn {
 	background-image: url(../img/light/del-icon.svg);
 	background-repeat: no-repeat;
 	width: 18px;
 	height: 18px;
-	background-color: #f7f7f7;
+	background-color: var(--todo-list-icon-background-color);
 	border: none;
 	cursor: pointer;
 }
-
+.trash-btn:hover {
+	background-image: url(../img/light/del-icon-hover.svg);
+}
 
 .completed {
 	text-decoration: line-through;
