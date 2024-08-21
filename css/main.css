@@ -212,10 +212,6 @@ select {
 	height: 30px;
 	margin-top: 30px;
 	background: var(--todo-list-background);
-	color: var(--todo-list-text-color);
-	font-weight: 500;
-	font-size: 20px;
-	line-height: 20px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -225,8 +221,12 @@ select {
 	flex: 1;
 }
 .todo-item {
+	color: var(--todo-list-text-color);
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 20px;
 	padding: 0rem 0.5rem;
-	padding-left: 17px;
+	padding-left: 42px;
 }
 .complete-btn {
 	width: 26px;
@@ -234,9 +234,29 @@ select {
 	border: 1px solid #6c63ff;
 	border-radius: 2px;
 	background-color: var(--todo-list-icon-background-color);
+	cursor: pointer;
+}
+.completed::after {
+	content: '';
+	position: relative;
+	right: 496px;
+	bottom: 3px;
+	width: 13.65px;
+	height: 7px;
+	border-left: 3px solid #6c63ff;
+	border-bottom: 3px solid #6c63ff;
+	transform: rotate(-45deg);
+	pointer-events: none;
+}
+.completed {
+	text-decoration: line-through;
+	opacity: 0.8;
+	
 }
 
 .edit-btn {
+	position: fixed;
+	margin-left: 460px;
 	background-image: url(../img/light/edit-icon.svg);
 	background-repeat: no-repeat;
 	width: 18px;
@@ -250,6 +270,8 @@ select {
 	background-image: url(../img/light/edit-icon-hover.svg);
 }
 .trash-btn {
+	position: fixed;
+	margin-left: 490px;
 	background-image: url(../img/light/del-icon.svg);
 	background-repeat: no-repeat;
 	width: 18px;
@@ -262,10 +284,7 @@ select {
 	background-image: url(../img/light/del-icon-hover.svg);
 }
 
-.completed {
-	text-decoration: line-through;
-	opacity: 0.8;
-}
+
 
 /* Делаем pop-up кнопку и окно  */
 .plus_button {

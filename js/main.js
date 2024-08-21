@@ -27,12 +27,14 @@ const todoInput = document.querySelector('.todo-input')
 const todoButton = document.querySelector('.btn-apply')
 const todoList = document.querySelector('.todo-list')
 const filterOption = document.querySelector('.filter-todo')
+// const startEdit = document.querySelector('.edit-btn')
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', getTodos)
 todoButton.addEventListener('click', addTodo)
 todoList.addEventListener('click', deleteCheck)
 filterOption.addEventListener('click', filterTodo)
+// startEdit.addEventListener('click', editTextBody)
 
 // Function
 function addTodo(event) {
@@ -43,7 +45,7 @@ function addTodo(event) {
 	todoDiv.classList.add('todo')
 	//Check mark button
 	const completeButton = document.createElement('button')
-	completeButton.innerHTML = '<i class=" fa-check"></i>'
+	completeButton.innerHTML = '<i  class="fa-check"></i>'
 	completeButton.classList.add('complete-btn')
 	todoDiv.appendChild(completeButton)
 	//Create li
@@ -55,9 +57,10 @@ function addTodo(event) {
 	saveLocalTodos(todoInput.value)
 	//Check edit button
 	const editButton = document.createElement('button')
-	editButton.innerHTML = '<i class=" fa-edit"></i>'
+	editButton.innerHTML = '<i id=start-edit class="fa-edit"></i>'
 	editButton.classList.add('edit-btn')
 	todoDiv.appendChild(editButton)
+
 	//Check trash button
 	const trashButton = document.createElement('button')
 	trashButton.innerHTML = '<i class="fa-trash"></i>'
@@ -85,6 +88,49 @@ function deleteCheck(e) {
 	}
 }
 
+// EDIT BUTTON
+// const startEdit = document.querySelector('.edit-btn')
+// startEdit.addEventListener('click', editTextBody)
+// function editTextBody() {
+// 	let editable1 = document.getElementsByClassName('todo-item')
+// 	let editable2 =
+// 		'<input type="text" value="' +
+// 		editable1[0].innerHTML +
+// 		'"id="edit_current_text"/>'
+// 	editable1[0].innerHTML = ''
+// 	editable1[0].insertAdjacentHTML('afterBegin', editable2)
+// 	startEdit.removeEventListener('click', editTextBody)
+// 	startEdit.addEventListener('click', saveTextBody)
+// }
+// function saveTextBody() {
+// 	let text1 = document.getElementById('edit_current_text')
+// 	let editable1 = document.getElementsByClassName('todo-item')
+// 	editable1[0].innerHTML = text1.value
+// 	startEdit.removeEventListener('click', saveTextBody)
+// 	startEdit.addEventListener('click', editTextBody)
+// }
+
+// let OnClk = document.addEventListener('click', editTextBody)
+
+// function editTextBody() {
+// 	let editable1 = document.getElementsByClassName('todo-item')
+// 	let editable2 =
+// 		'<input type="text" value="' +
+// 		editable1[0].innerHTML +
+// 		'"id="edit_current_text"/>'
+// 	editable1[0].innerHTML = ''
+// 	editable1[0].insertAdjacentHTML('afterBegin', editable2)
+// 	document.removeEventListener('click', editTextBody)
+// 	let OnClk = document.addEventListener('click', saveTextBody)
+// }
+
+// function saveTextBody() {
+// 	let text1 = document.getElementById('edit_current_text')
+// 	let editable1 = document.getElementsByClassName('todo-item')
+// 	editable1[0].innerHTML = text1.value
+// 	document.removeEventListener('click', saveTextBody)
+// 	let OnClk = document.addEventListener('click', editTextBody)
+// }
 //ВЫПАДАЮЩИЙ СПИСОК
 function filterTodo(e) {
 	const todos = todoList.childNodes
