@@ -102,6 +102,7 @@ function deleteCheck(e) {
 // 	startEdit.removeEventListener('click', editTextBody)
 // 	startEdit.addEventListener('click', saveTextBody)
 // }
+
 // function saveTextBody() {
 // 	let text1 = document.getElementById('edit_current_text')
 // 	let editable1 = document.getElementsByClassName('todo-item')
@@ -110,8 +111,9 @@ function deleteCheck(e) {
 // 	startEdit.addEventListener('click', editTextBody)
 // }
 
-// let OnClk = document.addEventListener('click', editTextBody)
 
+
+// let OnClk = document.addEventListener('click', editTextBody)
 // function editTextBody() {
 // 	let editable1 = document.getElementsByClassName('todo-item')
 // 	let editable2 =
@@ -131,6 +133,8 @@ function deleteCheck(e) {
 // 	document.removeEventListener('click', saveTextBody)
 // 	let OnClk = document.addEventListener('click', editTextBody)
 // }
+
+
 //ВЫПАДАЮЩИЙ СПИСОК
 function filterTodo(e) {
 	const todos = todoList.childNodes
