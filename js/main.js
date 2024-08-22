@@ -27,14 +27,12 @@ const todoInput = document.querySelector('.todo-input')
 const todoButton = document.querySelector('.btn-apply')
 const todoList = document.querySelector('.todo-list')
 const filterOption = document.querySelector('.filter-todo')
-// const startEdit = document.querySelector('.edit-btn')
 
 // Event Listeners
-document.addEventListener('DOMContentLoaded', getTodos)
+// document.addEventListener('DOMContentLoaded', getTodos)
 todoButton.addEventListener('click', addTodo)
 todoList.addEventListener('click', deleteCheck)
 filterOption.addEventListener('click', filterTodo)
-// startEdit.addEventListener('click', editTextBody)
 
 // Function
 function addTodo(event) {
@@ -54,13 +52,12 @@ function addTodo(event) {
 	newTodo.classList.add('todo-item')
 	todoDiv.appendChild(newTodo)
 	//ADD TODO TO LOCALSTORAGE
-	saveLocalTodos(todoInput.value)
+	// saveLocalTodos(todoInput.value)
 	//Check edit button
 	const editButton = document.createElement('button')
-	editButton.innerHTML = '<i id=start-edit class="fa-edit"></i>'
+	editButton.innerHTML = '<i class="fa-edit"></i>'
 	editButton.classList.add('edit-btn')
 	todoDiv.appendChild(editButton)
-
 	//Check trash button
 	const trashButton = document.createElement('button')
 	trashButton.innerHTML = '<i class="fa-trash"></i>'
@@ -70,6 +67,8 @@ function addTodo(event) {
 	todoList.appendChild(todoDiv)
 	//CLEAR TODO INPU VALUE
 	todoInput.value = ''
+	// const startEdit = document.querySelector('.edit-btn')
+	// startEdit.addEventListener('click', editTextBody)
 }
 
 function deleteCheck(e) {
@@ -89,8 +88,7 @@ function deleteCheck(e) {
 }
 
 // EDIT BUTTON
-// const startEdit = document.querySelector('.edit-btn')
-// startEdit.addEventListener('click', editTextBody)
+
 // function editTextBody() {
 // 	let editable1 = document.getElementsByClassName('todo-item')
 // 	let editable2 =
@@ -110,8 +108,6 @@ function deleteCheck(e) {
 // 	startEdit.removeEventListener('click', saveTextBody)
 // 	startEdit.addEventListener('click', editTextBody)
 // }
-
-
 
 // let OnClk = document.addEventListener('click', editTextBody)
 // function editTextBody() {
@@ -133,7 +129,6 @@ function deleteCheck(e) {
 // 	document.removeEventListener('click', saveTextBody)
 // 	let OnClk = document.addEventListener('click', editTextBody)
 // }
-
 
 //ВЫПАДАЮЩИЙ СПИСОК
 function filterTodo(e) {
@@ -161,61 +156,61 @@ function filterTodo(e) {
 	})
 }
 
-function saveLocalTodos(todo) {
-	let todos
-	if (localStorage.getItem('todos') === null) {
-		todos = []
-	} else {
-		todos = JSON.parse(localStorage.getItem('todos'))
-	}
-	todos.push(todo)
-	localStorage.setItem('todos', JSON.stringify(todos))
-}
+// function saveLocalTodos(todo) {
+// 	let todos
+// 	if (localStorage.getItem('todos') === null) {
+// 		todos = []
+// 	} else {
+// 		todos = JSON.parse(localStorage.getItem('todos'))
+// 	}
+// 	todos.push(todo)
+// 	localStorage.setItem('todos', JSON.stringify(todos))
+// }
 
-function getTodos() {
-	let todos
-	if (localStorage.getItem('todos') === null) {
-		todos = []
-	} else {
-		todos = JSON.parse(localStorage.getItem('todos'))
-	}
-	todos.forEach(function (todo) {
-		//Todo DIV
-		const todoDiv = document.createElement('div')
-		todoDiv.classList.add('todo')
-		//Check mark button
-		const completeButton = document.createElement('button')
-		completeButton.innerHTML = '<i class=" fa-check"></i>'
-		completeButton.classList.add('complete-btn')
-		todoDiv.appendChild(completeButton)
-		//Create li
-		const newTodo = document.createElement('li')
-		newTodo.innerText = todo
-		newTodo.classList.add('todo-item')
-		todoDiv.appendChild(newTodo)
-		//Check edit button
-		const editButton = document.createElement('button')
-		editButton.innerHTML = '<i class=" fa-edit"></i>'
-		editButton.classList.add('edit-btn')
-		todoDiv.appendChild(editButton)
-		//Check trash button
-		const trashButton = document.createElement('button')
-		trashButton.innerHTML = '<i class="fa-trash"></i>'
-		trashButton.classList.add('trash-btn')
-		todoDiv.appendChild(trashButton)
-		//APPEND TO LIST
-		todoList.appendChild(todoDiv)
-	})
-}
+// function getTodos() {
+// 	let todos
+// 	if (localStorage.getItem('todos') === null) {
+// 		todos = []
+// 	} else {
+// 		todos = JSON.parse(localStorage.getItem('todos'))
+// 	}
+// 	todos.forEach(function (todo) {
+// 		//Todo DIV
+// 		const todoDiv = document.createElement('div')
+// 		todoDiv.classList.add('todo')
+// 		//Check mark button
+// 		const completeButton = document.createElement('button')
+// 		completeButton.innerHTML = '<i class=" fa-check"></i>'
+// 		completeButton.classList.add('complete-btn')
+// 		todoDiv.appendChild(completeButton)
+// 		//Create li
+// 		const newTodo = document.createElement('li')
+// 		newTodo.innerText = todo
+// 		newTodo.classList.add('todo-item')
+// 		todoDiv.appendChild(newTodo)
+// 		//Check edit button
+// 		const editButton = document.createElement('button')
+// 		editButton.innerHTML = '<i class=" fa-edit"></i>'
+// 		editButton.classList.add('edit-btn')
+// 		todoDiv.appendChild(editButton)
+// 		//Check trash button
+// 		const trashButton = document.createElement('button')
+// 		trashButton.innerHTML = '<i class="fa-trash"></i>'
+// 		trashButton.classList.add('trash-btn')
+// 		todoDiv.appendChild(trashButton)
+// 		//APPEND TO LIST
+// 		todoList.appendChild(todoDiv)
+// 	})
+// }
 
-function removeLocalTodos(todo) {
-	let todos
-	if (localStorage.getItem('todos') === null) {
-		todos = []
-	} else {
-		todos = JSON.parse(localStorage.getItem('todos'))
-	}
-	const todoIndex = todo.children[1].innerText
-	todos.splice(todos.indexOf(todoIndex), 1)
-	localStorage.setItem('todos', JSON.stringify(todos))
-}
+// function removeLocalTodos(todo) {
+// 	let todos
+// 	if (localStorage.getItem('todos') === null) {
+// 		todos = []
+// 	} else {
+// 		todos = JSON.parse(localStorage.getItem('todos'))
+// 	}
+// 	const todoIndex = todo.children[1].innerText
+// 	todos.splice(todos.indexOf(todoIndex), 1)
+// 	localStorage.setItem('todos', JSON.stringify(todos))
+// }
