@@ -1,11 +1,38 @@
-// Переключение темы
-// Выбираем кнопку
-const btn = document.querySelector('.btn-theme')
-// Отслеживаем щелчок по кнопке
-btn.addEventListener('click', function () {
-	// Затем переключаем (добавляем/удаляем) класс .dark-theme для body
-	document.body.classList.toggle('dark-theme')
+// Переключение темы + все сохранено
+const body = document.body
+const toggleTheme = document.querySelector('.btn-theme')
+let theme = 'light'
+
+if (!localStorage.getItem('mode')) {
+	localStorage.setItem('mode', theme)
+} else {
+	theme = localStorage.getItem('mode')
+}
+
+if (theme === 'dark') {
+	changeToggle(theme)
+} 
+
+//Событие по клику на кнопку
+toggleTheme.addEventListener('click', () => {
+	if (theme === 'light') {   //Если тема светлая 
+		changeToggle('dark')   //то я хочу получить темную тему 
+	} else {
+		changeToggle('light')  //и наоборот 
+	}
+	localStorage.setItem('mode', theme)
 })
+
+function changeToggle(newMode) {
+	if (newMode === 'dark') {
+		body.className = 'dark-theme'
+		theme = 'dark'
+	} else {
+		body.className = ''
+		theme = 'light'
+	}
+}
+
 
 //Открытие и закрытие POP-UP окна
 const openPopUp = document.getElementById('open_pop_up')
@@ -27,9 +54,10 @@ const todoInput = document.querySelector('.todo-input')
 const todoButton = document.querySelector('.btn-apply')
 const todoList = document.querySelector('.todo-list')
 const filterOption = document.querySelector('.filter-todo')
+const unmarkedBackground = document.querySelector('unmarked-background')
 
 // Event Listeners
-// document.addEventListener('DOMContentLoaded', getTodos)
+document.addEventListener('DOMContentLoaded', getTodos)
 todoButton.addEventListener('click', addTodo)
 todoList.addEventListener('click', deleteCheck)
 filterOption.addEventListener('click', filterTodo)
@@ -52,7 +80,7 @@ function addTodo(event) {
 	newTodo.classList.add('todo-item')
 	todoDiv.appendChild(newTodo)
 	//ADD TODO TO LOCALSTORAGE
-	// saveLocalTodos(todoInput.value)
+	saveLocalTodos(todoInput.value)
 	//Check edit button
 	const editButton = document.createElement('button')
 	editButton.innerHTML = '<i class="fa-edit"></i>'
@@ -67,8 +95,6 @@ function addTodo(event) {
 	todoList.appendChild(todoDiv)
 	//CLEAR TODO INPU VALUE
 	todoInput.value = ''
-	// const startEdit = document.querySelector('.edit-btn')
-	// startEdit.addEventListener('click', editTextBody)
 }
 
 function deleteCheck(e) {
@@ -88,7 +114,8 @@ function deleteCheck(e) {
 }
 
 // EDIT BUTTON
-
+// const startEdit = document.querySelector('.edit-btn')
+// startEdit.addEventListener('click', editTextBody)
 // function editTextBody() {
 // 	let editable1 = document.getElementsByClassName('todo-item')
 // 	let editable2 =
@@ -156,61 +183,62 @@ function filterTodo(e) {
 	})
 }
 
-// function saveLocalTodos(todo) {
-// 	let todos
-// 	if (localStorage.getItem('todos') === null) {
-// 		todos = []
-// 	} else {
-// 		todos = JSON.parse(localStorage.getItem('todos'))
-// 	}
-// 	todos.push(todo)
-// 	localStorage.setItem('todos', JSON.stringify(todos))
-// }
+function saveLocalTodos(todo) {
+	let todos
+	if (localStorage.getItem('todos') === null) {
+		todos = []
+	} else {
+		todos = JSON.parse(localStorage.getItem('todos'))
+	}
+	todos.push(todo)
+	localStorage.setItem('todos', JSON.stringify(todos))
+}
 
-// function getTodos() {
-// 	let todos
-// 	if (localStorage.getItem('todos') === null) {
-// 		todos = []
-// 	} else {
-// 		todos = JSON.parse(localStorage.getItem('todos'))
-// 	}
-// 	todos.forEach(function (todo) {
-// 		//Todo DIV
-// 		const todoDiv = document.createElement('div')
-// 		todoDiv.classList.add('todo')
-// 		//Check mark button
-// 		const completeButton = document.createElement('button')
-// 		completeButton.innerHTML = '<i class=" fa-check"></i>'
-// 		completeButton.classList.add('complete-btn')
-// 		todoDiv.appendChild(completeButton)
-// 		//Create li
-// 		const newTodo = document.createElement('li')
-// 		newTodo.innerText = todo
-// 		newTodo.classList.add('todo-item')
-// 		todoDiv.appendChild(newTodo)
-// 		//Check edit button
-// 		const editButton = document.createElement('button')
-// 		editButton.innerHTML = '<i class=" fa-edit"></i>'
-// 		editButton.classList.add('edit-btn')
-// 		todoDiv.appendChild(editButton)
-// 		//Check trash button
-// 		const trashButton = document.createElement('button')
-// 		trashButton.innerHTML = '<i class="fa-trash"></i>'
-// 		trashButton.classList.add('trash-btn')
-// 		todoDiv.appendChild(trashButton)
-// 		//APPEND TO LIST
-// 		todoList.appendChild(todoDiv)
-// 	})
-// }
+function getTodos() {
+	let todos
+	if (localStorage.getItem('todos') === null) {
+		todos = []
+	} else {
+		todos = JSON.parse(localStorage.getItem('todos'))
+	}
+	todos.forEach(function (todo) {
+		//Todo DIV
+		const todoDiv = document.createElement('div')
+		todoDiv.classList.add('todo')
+		//Check mark button
+		const completeButton = document.createElement('button')
+		completeButton.innerHTML = '<i class=" fa-check"></i>'
+		completeButton.classList.add('complete-btn')
+		todoDiv.appendChild(completeButton)
+		//Create li
+		const newTodo = document.createElement('li')
+		newTodo.innerText = todo
+		newTodo.classList.add('todo-item')
+		todoDiv.appendChild(newTodo)
+		//Check edit button
+		const editButton = document.createElement('button')
+		editButton.innerHTML =
+			'<i onClick = "editTask(${index})" class=" fa-edit"></i>'
+		editButton.classList.add('edit-btn')
+		todoDiv.appendChild(editButton)
+		//Check trash button
+		const trashButton = document.createElement('button')
+		trashButton.innerHTML = '<i class="fa-trash"></i>'
+		trashButton.classList.add('trash-btn')
+		todoDiv.appendChild(trashButton)
+		//APPEND TO LIST
+		todoList.appendChild(todoDiv)
+	})
+}
 
-// function removeLocalTodos(todo) {
-// 	let todos
-// 	if (localStorage.getItem('todos') === null) {
-// 		todos = []
-// 	} else {
-// 		todos = JSON.parse(localStorage.getItem('todos'))
-// 	}
-// 	const todoIndex = todo.children[1].innerText
-// 	todos.splice(todos.indexOf(todoIndex), 1)
-// 	localStorage.setItem('todos', JSON.stringify(todos))
-// }
+function removeLocalTodos(todo) {
+	let todos
+	if (localStorage.getItem('todos') === null) {
+		todos = []
+	} else {
+		todos = JSON.parse(localStorage.getItem('todos'))
+	}
+	const todoIndex = todo.children[1].innerText
+	todos.splice(todos.indexOf(todoIndex), 1)
+	localStorage.setItem('todos', JSON.stringify(todos))
+}

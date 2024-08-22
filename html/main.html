@@ -14,11 +14,16 @@
 	</head>
 	<body>
 		<div class="wrapper">
-			<div class="item todo-app">
+			<div class="todo-app">
 				<h1>TODO LIST</h1>
-				<div class="item row">
+				<div class="row">
 					<form class="search-note" action="#!">
-						<input class="name-note" type="text" placeholder="Search note..." />
+						<input
+							id="edit-input"
+							class="name-note"
+							type="text"
+							placeholder="Search note..."
+						/>
 						<button class="search" type="submit"></button>
 					</form>
 
@@ -31,7 +36,7 @@
 						</select>
 					</div>
 					<!-- Переключение темы  -->
-					<div class="btn-theme"></div>
+					<button class="btn-theme"></button>
 				</div>
 
 				<!-- Задний фон при отсутствие заметок -->
