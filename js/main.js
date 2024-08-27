@@ -94,6 +94,25 @@ function addTodo(event) {
 	todoList.appendChild(todoDiv)
 	//CLEAR TODO INPU VALUE
 	todoInput.value = ''
+	// Редактирование заметки
+	let edit = document.querySelectorAll('.edit-btn')
+	let text = document.querySelectorAll('.todo-item')
+	for (let i = 0; i < edit.length; i++) {
+		let editMode = false
+
+		edit[i].addEventListener('click', function () {
+			if (editMode) {
+				this.textContent = 'EDIT'
+				text[i].removeAttribute('contentEditable')
+			} else {
+				this.textContent = 'SAVE'
+				text[i].setAttribute('contentEditable', true)
+				text[i].focus()
+			}
+
+			editMode = !editMode
+		})
+	}
 }
 
 function deleteCheck(e) {
@@ -182,6 +201,25 @@ function getTodos() {
 		todoDiv.appendChild(trashButton)
 		//APPEND TO LIST
 		todoList.appendChild(todoDiv)
+		// Редактирование заметки
+		let edit = document.querySelectorAll('.edit-btn')
+		let text = document.querySelectorAll('.todo-item')
+		for (let i = 0; i < edit.length; i++) {
+			let editMode = false
+
+			edit[i].addEventListener('click', function () {
+				if (editMode) {
+					this.textContent = 'EDIT'
+					text[i].removeAttribute('contentEditable')
+				} else {
+					this.textContent = 'SAVE'
+					text[i].setAttribute('contentEditable', true)
+					text[i].focus()
+				}
+
+				editMode = !editMode
+			})
+		}
 	})
 }
 

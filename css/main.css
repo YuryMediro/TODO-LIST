@@ -271,15 +271,24 @@ select {
 }
 .todo li {
 	flex: 1;
+	margin-left: 17px;
+}
+.todo li:focus {
+	outline: none;
+	border: 1px solid #6c63ff;
+	border-radius: 4px;
+	max-width: 500px;
+	margin-right: 80px;
 }
 .todo-item {
 	color: var(--todo-list-text-color);
 	font-weight: 500;
 	font-size: 20px;
 	line-height: 20px;
-	padding: 0rem 0.5rem;
-	padding-left: 17px;
+	padding: 0.17rem 0rem;
+	padding-left: 7px;
 }
+
 .complete-btn {
 	width: 26px;
 	height: 26px;
@@ -301,13 +310,11 @@ select {
 
 .completed > .complete-btn {
 	background-color: #6c63ff;
-	transition: 0.5s;
 }
 
 .completed > .todo-item {
 	text-decoration: line-through;
 	opacity: 0.5;
-	transition: 0.5s;
 }
 .completed::after {
 	border-left: 3px solid #fff;
@@ -316,21 +323,17 @@ select {
 
 .edit-btn {
 	position: absolute;
+	color: #cdcdcd;
 	margin-left: 450px;
-	/* background-image: url(../img/light/edit-icon.svg); */
-	/* background-repeat: no-repeat; */
 	font-weight: 600;
 	font-size: 13px;
 	line-height: 13px;
-	/* width: 18px;
-	height: 18px; */
 	background-color: var(--todo-list-icon-background-color);
 	border: none;
 	cursor: pointer;
-	/* margin-right: 14px; */
 }
 .edit-btn:hover {
-	/* background-image: url(../img/light/edit-icon-hover.svg); */
+	color: #6c63ff;
 }
 .trash-btn {
 	position: absolute;
