@@ -13,6 +13,11 @@
 		/>
 	</head>
 	<body>
+		<!-- Делаем LOADER -->
+		<div class="mask">
+			<div class="loader"></div>
+		</div>
+
 		<div class="wrapper">
 			<div class="todo-app">
 				<h1>TODO LIST</h1>
@@ -24,7 +29,7 @@
 							type="text"
 							placeholder="Search note..."
 						/>
-						<button class="search" type="submit"></button>
+						<input class="search" value="" type="submit" />
 					</form>
 
 					<!-- Выпадающий список -->
@@ -44,7 +49,7 @@
 
 				<!-- Делаем сами заметки -->
 				<div class="todo-container">
-					<ul class="todo-list"></ul>
+					<ul class="todo-list" id="elem"></ul>
 				</div>
 
 				<!-- pop-up окно -->
@@ -64,7 +69,7 @@
 								/>
 							</form>
 							<div class="pop_up_btn_container">
-								<button class="btn-cancel" id="pop_up_close">CANCEL</button>
+								<button class="btn-cancel"  id="pop_up_close">CANCEL</button>
 								<button class="btn-apply" type="submit">
 									<i class="apply">APPLY</i>
 								</button>
@@ -74,7 +79,6 @@
 				</div>
 			</div>
 		</div>
-
 		<script src="/To-Do List/js/main.js"></script>
 	</body>
 </html>

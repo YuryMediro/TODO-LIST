@@ -11,14 +11,15 @@ if (!localStorage.getItem('mode')) {
 
 if (theme === 'dark') {
 	changeToggle(theme)
-} 
+}
 
 //Событие по клику на кнопку
 toggleTheme.addEventListener('click', () => {
-	if (theme === 'light') {   //Если тема светлая 
-		changeToggle('dark')   //то я хочу получить темную тему 
+	if (theme === 'light') {
+		//Если тема светлая
+		changeToggle('dark') //то я хочу получить темную тему
 	} else {
-		changeToggle('light')  //и наоборот 
+		changeToggle('light') //и наоборот
 	}
 	localStorage.setItem('mode', theme)
 })
@@ -32,7 +33,6 @@ function changeToggle(newMode) {
 		theme = 'light'
 	}
 }
-
 
 //Открытие и закрытие POP-UP окна
 const openPopUp = document.getElementById('open_pop_up')
@@ -54,7 +54,6 @@ const todoInput = document.querySelector('.todo-input')
 const todoButton = document.querySelector('.btn-apply')
 const todoList = document.querySelector('.todo-list')
 const filterOption = document.querySelector('.filter-todo')
-const unmarkedBackground = document.querySelector('unmarked-background')
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', getTodos)
@@ -79,11 +78,11 @@ function addTodo(event) {
 	newTodo.innerText = todoInput.value
 	newTodo.classList.add('todo-item')
 	todoDiv.appendChild(newTodo)
-	//ADD TODO TO LOCALSTORAGE
+	// ADD TODO TO LOCALSTORAGE
 	saveLocalTodos(todoInput.value)
 	//Check edit button
 	const editButton = document.createElement('button')
-	editButton.innerHTML = '<i class="fa-edit"></i>'
+	editButton.innerHTML = '<i class="fa-edit">EDIT</i>'
 	editButton.classList.add('edit-btn')
 	todoDiv.appendChild(editButton)
 	//Check trash button
@@ -112,50 +111,6 @@ function deleteCheck(e) {
 		todo.classList.toggle('completed')
 	}
 }
-
-// EDIT BUTTON
-// const startEdit = document.querySelector('.edit-btn')
-// startEdit.addEventListener('click', editTextBody)
-// function editTextBody() {
-// 	let editable1 = document.getElementsByClassName('todo-item')
-// 	let editable2 =
-// 		'<input type="text" value="' +
-// 		editable1[0].innerHTML +
-// 		'"id="edit_current_text"/>'
-// 	editable1[0].innerHTML = ''
-// 	editable1[0].insertAdjacentHTML('afterBegin', editable2)
-// 	startEdit.removeEventListener('click', editTextBody)
-// 	startEdit.addEventListener('click', saveTextBody)
-// }
-
-// function saveTextBody() {
-// 	let text1 = document.getElementById('edit_current_text')
-// 	let editable1 = document.getElementsByClassName('todo-item')
-// 	editable1[0].innerHTML = text1.value
-// 	startEdit.removeEventListener('click', saveTextBody)
-// 	startEdit.addEventListener('click', editTextBody)
-// }
-
-// let OnClk = document.addEventListener('click', editTextBody)
-// function editTextBody() {
-// 	let editable1 = document.getElementsByClassName('todo-item')
-// 	let editable2 =
-// 		'<input type="text" value="' +
-// 		editable1[0].innerHTML +
-// 		'"id="edit_current_text"/>'
-// 	editable1[0].innerHTML = ''
-// 	editable1[0].insertAdjacentHTML('afterBegin', editable2)
-// 	document.removeEventListener('click', editTextBody)
-// 	let OnClk = document.addEventListener('click', saveTextBody)
-// }
-
-// function saveTextBody() {
-// 	let text1 = document.getElementById('edit_current_text')
-// 	let editable1 = document.getElementsByClassName('todo-item')
-// 	editable1[0].innerHTML = text1.value
-// 	document.removeEventListener('click', saveTextBody)
-// 	let OnClk = document.addEventListener('click', editTextBody)
-// }
 
 //ВЫПАДАЮЩИЙ СПИСОК
 function filterTodo(e) {
@@ -217,8 +172,7 @@ function getTodos() {
 		todoDiv.appendChild(newTodo)
 		//Check edit button
 		const editButton = document.createElement('button')
-		editButton.innerHTML =
-			'<i onClick = "editTask(${index})" class=" fa-edit"></i>'
+		editButton.innerHTML = '<i class="fa-edit">EDIT</i>'
 		editButton.classList.add('edit-btn')
 		todoDiv.appendChild(editButton)
 		//Check trash button
@@ -242,3 +196,12 @@ function removeLocalTodos(todo) {
 	todos.splice(todos.indexOf(todoIndex), 1)
 	localStorage.setItem('todos', JSON.stringify(todos))
 }
+//Делаем LOADER
+let mask = document.querySelector('.mask')
+
+window.addEventListener('load', () => {
+	mask.classList.add('hide')
+	setTimeout(() => {
+		mask.remove()
+	}, 900)
+})
